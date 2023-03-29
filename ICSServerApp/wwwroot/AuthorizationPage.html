@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Authorization</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            transition: 0.3s;
+            font-family: sans-serif;
+        }
+        
+        .wrapper{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .loginHandler{
+            width: 25%;
+            height: 70%;
+            background-color: #efefef;
+            border-radius: 15px;
+            border: 2px solid grey;
+            overflow: hidden;
+        }
+        
+        .header{
+            top: 0;
+            text-align: center;
+            height: 15%;
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid grey;
+            background-color: #c8c8c8;
+        }
+
+        .loginLine {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 35%;
+            scale: 120%;
+        }
+        
+        .loginLine:hover, .passwordLine:hover{
+            scale: 110%;
+        }
+        
+        input{
+            background: transparent;
+            border: 0;
+            border-bottom: 2px solid black;
+            font-size: 25px;
+        }
+        
+        input:focus{
+            outline: none;
+        }
+
+        .passwordLine {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 35%;
+            scale: 120%;
+        }
+
+        .btnLine {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 15%;
+            width: 100%;
+            bottom: 0;
+        }
+        
+        .btn{
+            border: grey solid 2px;
+            border-radius: 10px;
+            padding: 7px;
+            font-size: 30px;
+            width: 60%;
+            text-align: center;
+        }
+        
+        .btn:hover{
+            scale: 110%;
+            background-color: #c8c8c8;
+            cursor: pointer;
+            width: 30%;
+        }
+    </style>
+</head>
+    <body>
+        <div id="background" class="wrapper">
+            <div class="loginHandler">
+                <div class="header">
+                    <h1 style="padding: 7px; background-color: #fde910; border-bottom-left-radius: 15px; border-top-right-radius: 15px">Авторизация</h1>
+                </div>
+                <div class="loginLine">
+                    <div>
+                        <h2 style="padding-bottom: 10px">Логин:</h2>
+                        <input id="login" type="text" placeholder="Введите логин">
+                    </div>
+                </div>
+                <div class="passwordLine">
+                    <div>
+                        <h2 style="padding-bottom: 10px">Пароль:</h2>
+                        <input id="password" type="password" placeholder="Введите пароль">
+                    </div>
+                </div>
+                <div class="btnLine">
+                    <div class="btn" onclick="authorise()">Войти</div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        async function authorise(){
+            const login = document.getElementById("login").value;
+            const password = document.getElementById("password").value;
+            
+            const response = await fetch(`api/Authorise?login=${login}&password=${password}`,{
+                method: "POST",
+            })
+            
+            if (response.ok){
+                location.reload();
+            }
+            else{
+                const background = document.getElementById("background");
+                background.setAttribute("style", "background-color: rgb(255, 0, 0, 0.5)");
+                setTimeout(() => {
+                    background.removeAttribute("style");
+                }, 500)
+            }
+        }
+    </script>
+</html>

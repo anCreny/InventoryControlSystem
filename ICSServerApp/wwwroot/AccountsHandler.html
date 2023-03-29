@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts</title>
+</head>
+    <body id="body">
+    </body>
+    <script>
+        async function getAccounts(){
+            const response = await fetch("api/GetAccount", {
+                method : "GET",
+                headers: {"Accept" : "application/json"}
+            });
+            
+            if (response.ok === true){
+                const accounts = await response.json();
+                accounts.accounts.forEach(account => addAccount(account));
+            }
+        }
+        
+        function addAccount(account){
+            
+        }
+    </script>
+</html>

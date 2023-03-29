@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <style>
+        *{
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: 0.3s;
+
+        }
+        
+        body{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+        
+        .wrapper{
+            display: block;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .accounts{
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            width: 90%;
+        }
+        
+        .accounts-line{
+            display: flex;
+            width: 100%;
+        }
+        
+        .account {
+            border: solid grey 2px;
+            border-radius: 15px;
+            padding: 10px;
+            margin: 10px;
+            background-color: #efefef;
+            width: 14%;
+            height: 7em;
+        }
+        
+        .account-edit{
+            width: 20%;
+            height: 30%;
+            background-color: #ece373;
+        }
+
+        .account-edit:hover{
+            cursor: default !important;
+            scale: 100% !important;
+        }
+        
+        .account:hover{
+            cursor: pointer;
+            scale: 110%;
+            background-color: #ece373;
+        }
+        
+        .buttonsHolder{
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .btn {
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 7px;
+            display: flex;
+            width: fit-content;
+            justify-content: center;
+            align-items: center;
+            background-color: #afb6b8;
+        }
+        
+        .btn:hover{
+            background-color: #919799;
+            cursor: pointer;
+            scale: 110%;
+        }
+        
+        .header{
+            top: 0;
+            position: relative;
+            margin-bottom: 15px;
+            background-color: #b2b2b2;
+            width: 100%;
+            height: 10%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .searchHandler {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: fit-content;
+            margin-top: 60px;
+            margin-bottom: 20px;
+        }
+        
+        input[type=text]{
+            background-color: white;
+            color: black;
+            border: 0;
+            border-bottom: 2px solid black;
+            width: 50%;
+            font-size: 35px;
+        }
+
+        input[type=text]:focus{
+            outline: 0;
+            border-bottom: 3px solid black;
+        }
+        
+        .logoutBtn{
+            position: relative;
+            right: 0;
+            margin: 15px;
+            border-radius: 10px;
+            border: 0;
+            background-color: #b2b2b2;
+            padding: 7px;
+            font-size: 25px;
+        }
+        
+        .logoutBtn:hover{
+            scale: 110%;
+            background-color: grey;
+            cursor: pointer;
+        }
+        
+        .addBtn{
+            font-size: 30px;
+            margin-left: 20px;
+            background-color: #fde910;
+            border-radius: 100px;
+            height: 1em;
+            width: 1em;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 7px;
+        }
+        
+        .addBtn:hover{
+            scale: 120%;
+            cursor: pointer;
+            background-color: #ffea3c;
+        }
+        
+        .popup-blur{
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+        }
+        
+        .popup-window{
+            position: fixed;
+            flex-wrap: wrap;
+            height: 70%;
+            width: 30%;
+            scale: 0;
+            z-index: 110;
+            background-color: #ffea3c;
+            border: solid #535353 3px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .popup-window-show{
+            scale: 100%;
+        }
+        
+        .title{
+            position: relative;
+            height: 7%;
+            width: 80%;
+            border-bottom: dashed grey 2px;
+            font-size: 25px;
+            padding: 10px;
+            display: flex;
+            align-items: end;
+        }
+        
+        .changeFiled{
+            background: transparent;
+            border: 0;
+            width: fit-content;
+            left: 0;
+            height: fit-content;
+            border-bottom: 2px black solid;
+            margin: 10px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .changeFiledHolder{
+            margin-top: -21px;
+            top: 0;
+            width: 84%;
+            background: linear-gradient(to bottom, #d5c32a,#ffea3c);
+        }
+        
+        .changeFiled:focus{
+            outline: none;
+        }
+        
+        .btnSave, .btnCancel{
+            width: 25%;
+            border-radius: 10px;
+            padding: 7px;
+            border: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            transition: 0s;
+        }
+
+        .btnSave:hover, .btnCancel:hover{
+            cursor: pointer;
+            scale: 110%;
+            backdrop-filter: brightness(-50%);
+            
+        }
+        
+        .btnSave{
+            background-color: #0fe30f;
+        }
+        
+        .btnCancel{
+            background-color: #ff3636;
+        }
+        
+        .btnAccountOptionHolder{
+            height: 10%;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+    <body>
+    <div id="popupBack" class="popup-blur" style="visibility: hidden" style="background-color: rgb(255, 0, 0, 0.5)">
+        <div id="popupWindow" class="popup-window">
+            <div class="title">ФИО сотрудника</div>
+            <div class="changeFiledHolder">
+                <input placeholder="Введите имя" id="fullname" class="changeFiled" value=""/>
+            </div>
+            <div class="title">Должность</div>
+            <div class="changeFiledHolder">
+                <select class="changeFiled" id="accessrights">
+                    <option id="operator" value="operator">Оператор</option>
+                    <option id="loader" value="loader">Погрузчик</option>
+                </select>
+            </div>
+            <div class="title">Логин</div>
+            <div class="changeFiledHolder">
+                <input placeholder="Введите логин" id="login" class="changeFiled" value=""/>
+            </div>
+            <div class="title">Пароль</div>
+            <div class="changeFiledHolder">
+                <input placeholder="Введите пароль" id="password" class="changeFiled" value=""/>
+            </div>
+            <div class="btnAccountOptionHolder">
+                <div id="createUserBtn" onclick="createUser()" class="btnSave">Создать</div>
+                <div id="optionSaveBtn" onclick="UpdateUser()" class="btnSave">Сохранить</div>
+                <div id="deleteUserBtn" onclick="deleteUser()" class="btnCancel">Удалить</div>
+                <div id="optionCancelBtn" onclick="hidePopup()" class="btnCancel">Отменить</div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="header">
+            <div></div>
+            <div style="display: inline-flex">
+                <h2 style="margin-left: 50px; font-size: 30px; padding: 7px; background-color: #fde910; border-bottom-left-radius: 15px; border-top-right-radius: 15px">Администрирование аккунтов</h2>
+                <h2 onclick="showUserCreateWindow()" class="addBtn">+</h2>
+            </div>
+            <div class="logoutBtn" onclick="logout()" style="right: 0">Выход</div>
+        </div>
+        <div class="searchHandler">
+            <input type="text" placeholder="Поиск">
+        </div>
+        <div style="display: flex; justify-content: center">
+            <div id="accounts" class="accounts">
+                
+            </div>
+        </div>
+    </div>
+    </body>
+    <script>
+        async function getAccounts(){
+            const response = await fetch("api/getUser", {
+                method: "GET",
+                headers: {"Accept" : "json/application"}
+            });
+            
+            if (response.ok){
+                return await response.json();
+            }
+        }
+        
+        async function drawAccounts(){
+            const accounts = await getAccounts();
+            
+            const divAccounts = document.getElementById("accounts");
+            divAccounts.innerHTML = "";
+            
+            for (const account of accounts) {
+                const divAccount = document.createElement("div");
+                divAccount.setAttribute("class", "account");
+                
+                const name = document.createElement("h2");
+                name.innerText = account.FullName;
+                name.setAttribute("style", "margin-right: 10px");
+                
+                const accessRight = document.createElement("p");
+                switch (account.AccessRight){
+                    case "operator":
+                        accessRight.innerText = "Оператор склада";
+                        break;
+                    case "loader":
+                        accessRight.innerText = "Оператор погрузчика";
+                        break;
+                    default:
+                        accessRight.innerText = "Бог системы";
+                        break;
+                }
+                
+                divAccount.addEventListener("click", () => showFullUserData(account.Login, account.Password, account.FullName, account.AccessRight, account.Id))
+                
+                divAccount.append(name);
+                divAccount.append(accessRight);
+                
+                divAccounts.append(divAccount);
+            }
+        }
+        
+        function showFullUserData(login, password, name, accessRight, id){
+            const createBtn = document.getElementById("createUserBtn");
+            createBtn.setAttribute("style", "display: none");
+            
+            const saveBtn = document.getElementById("optionSaveBtn");
+            const deleteBtn = document.getElementById("deleteUserBtn");
+            
+            deleteBtn.removeAttribute("style");
+            saveBtn.removeAttribute("style");
+            saveBtn.value = id;
+            
+            const loginHolder = document.getElementById("login");
+            loginHolder.value = login;
+            
+            const passwordHolder = document.getElementById("password");
+            passwordHolder.value = password;
+            
+            const nameHolder = document.getElementById("fullname");
+            nameHolder.value = name;
+            
+            const accessRightChoice = document.getElementById(accessRight);
+            accessRightChoice.setAttribute("Selected", "");
+            
+            const popupBack = document.getElementById("popupBack");
+            popupBack.removeAttribute("style");
+            
+            const popupWindow = document.getElementById("popupWindow");
+            popupWindow.classList.add("popup-window-show");
+        }
+        
+        async function deleteUser(){
+            const id = document.getElementById("optionSaveBtn").value;
+            
+            const response = await fetch(`Api/DeleteUser?id=${id}`, {
+                method: "POST"
+            })
+
+            if (response.ok === true){
+                await drawAccounts();
+                hidePopup();
+            }
+            else{
+                const background = document.getElementById("popupBack");
+                background.setAttribute("style", "background-color: rgb(255, 0, 0, 0.5)");
+                setTimeout(() => {
+                    background.removeAttribute("style");
+                }, 500)
+            }
+        }
+        
+        function showUserCreateWindow(){
+            const createBtn = document.getElementById("createUserBtn");
+            createBtn.removeAttribute("style");
+
+            const saveBtn = document.getElementById("optionSaveBtn");
+            const deleteBtn = document.getElementById("deleteUserBtn");
+            
+            deleteBtn.setAttribute("style", "display: none");
+            saveBtn.setAttribute("style", "display: none");
+
+            const popupBack = document.getElementById("popupBack");
+            popupBack.removeAttribute("style");
+
+            const popupWindow = document.getElementById("popupWindow");
+            popupWindow.classList.add("popup-window-show");
+        }
+        
+        function hidePopup(){
+            const popupBack = document.getElementById("popupBack");
+            popupBack.setAttribute("style", "visibility: hidden");
+
+            const popupWindow = document.getElementById("popupWindow");
+            popupWindow.classList.remove("popup-window-show");
+
+            const loginHolder = document.getElementById("login");
+            const passwordHolder = document.getElementById("password");
+            const nameHolder = document.getElementById("fullname");
+            
+            const loaderSelector = document.getElementById("loader");
+            const operatorSelector = document.getElementById("operator");
+            
+            loaderSelector.removeAttribute("selected");
+            operatorSelector.removeAttribute("selected");
+            
+            loginHolder.value = "";
+            passwordHolder.value = "";
+            nameHolder.value = "";
+        }
+        
+        async function createUser(){
+            const fullname = document.getElementById("fullname").value;
+            const login = document.getElementById("login").value;
+            const password = document.getElementById("password").value;
+            const accessRight = document.getElementById("accessrights").value;
+            
+            
+            const response = await fetch(`api/createuser?fullname=${fullname}&login=${login}&password=${password}&accessRight=${accessRight}`,{
+                method: "POST"
+            })
+            
+            if (response.ok === true){
+                await drawAccounts();
+                hidePopup();
+            }
+            else{
+                const background = document.getElementById("popupBack");
+                background.setAttribute("style", "background-color: rgb(255, 0, 0, 0.5)");
+                setTimeout(() => {
+                    background.removeAttribute("style");
+                }, 500)
+            }
+        }
+        
+        async function UpdateUser(){
+            const id = document.getElementById("optionSaveBtn").value;
+            const fullname = document.getElementById("fullname").value;
+            const login = document.getElementById("login").value;
+            const password = document.getElementById("password").value;
+            const accessRight = document.getElementById("accessrights").value;
+            
+            const response = await fetch(`api/updateuser?id=${id}&fullname=${fullname}&login=${login}&password=${password}&accessRight=${accessRight}`,{
+                method: "POST"
+            })
+
+            if (response.ok === true){
+                await drawAccounts();
+                hidePopup();
+            }
+            else{
+                const background = document.getElementById("popupBack");
+                background.setAttribute("style", "background-color: rgb(255, 0, 0, 0.5)");
+                setTimeout(() => {
+                    background.removeAttribute("style");
+                }, 500)
+            }
+        }
+
+        async function logout(){
+            const response = await fetch("Api/Logout", {
+                method: "POST"
+            })
+
+            if (response.ok === true){
+                location.reload();
+            }
+        }
+        
+        drawAccounts();
+    </script>
+</html>

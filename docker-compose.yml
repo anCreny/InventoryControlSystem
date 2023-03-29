@@ -1,0 +1,22 @@
+version: "3.4"
+
+services:
+  server:
+    build: ./ICSServerApp
+    volumes: 
+      - ./ICSServerApp/wwwroot:/publish/wwwroot
+    depends_on: 
+      - db 
+    ports: 
+      - 80:80
+    container_name: asp.net
+  db:
+    image: mysql:8.0.32
+    environment:
+      MYSQL_TCP_PORT: 3306
+      MYSQL_DATABASE: ICS_db
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+    volumes: 
+      - ./db:/var/lib/mysql 
+    container_name: ICS_db_container
