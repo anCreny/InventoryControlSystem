@@ -1,4 +1,5 @@
 using ICSServerApp.Additionals;
+using ICSServerApp.Models.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace ICSServerApp.Middlewares;
@@ -16,6 +17,20 @@ public class AuthorizationMiddleware
 
     public async Task Invoke(HttpContext context, UserHandlerService userHandlerService)
     {
+        var userCount = await _db.Users.CountAsync();
+        if (userCount == 0)
+        {
+            var adminUser = new User
+            {
+                FullName = "Creny",
+                Login = "admin",
+                Password = "admin",
+                AccessRight = "admin"
+            };
+            _db.Users.Add(adminUser);
+            await _db.SaveChangesAsync();
+        }
+        
         if (context.Request.Path.StartsWithSegments("/Api"))
         {
             await _next.Invoke(context);
@@ -38,6 +53,7 @@ public class AuthorizationMiddleware
                 {
                     context.Response.Cookies.Delete("login");
                     context.Response.Cookies.Delete("password");
+                    context.Response.Cookies.Delete("id");
                     context.Response.Redirect("/", true);
                 }
             }

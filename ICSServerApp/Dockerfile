@@ -16,5 +16,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /publish
 
 COPY --from=build /publish .
-
+EXPOSE 80
 ENTRYPOINT ["dotnet", "ICSServerApp.dll"]
+CMD ["wwwroot", "./wwwroot"]

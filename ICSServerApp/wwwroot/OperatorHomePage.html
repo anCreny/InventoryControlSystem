@@ -8,7 +8,7 @@
             font-family: sans-serif;
             margin: 0;
             padding: 0;
-            transition: 0.3s;
+            transition: 0.2s;
         }
         
         .wrapper{
@@ -21,7 +21,6 @@
         .header{
             top: 0;
             position: relative;
-            margin-bottom: 15px;
             background-color: #b2b2b2;
             width: 100%;
             height: 10%;
@@ -47,7 +46,159 @@
             cursor: pointer;
         }
         
+        .pageBarHolder{
+            position: relative;
+            left: 0;
+            top:0;
+            height: 90%;
+            width: 5%;
+            background-color: #b2b2b2;
+            border-bottom-right-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
         
+        .pageBtn{
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: inherit;
+            left: 0;
+            font-size: 30px;
+            transform-origin: left;
+        }
+        
+        .pageBtn:hover{
+            background-color: #fde910;
+            scale: 120%;
+            cursor: pointer;
+        }
+        
+        .pageBtn:active{
+            scale: 110%;
+            background-color: #d8c70c;
+            border-bottom-right-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        
+        .nameHolder{
+            margin-left: 50px; 
+            font-size: 30px; 
+            padding: 7px; 
+            background-color: #fde910; 
+            border-bottom-left-radius: 15px; 
+            border-top-right-radius: 15px
+        }
+        
+        .pageBtn > img{
+            max-width: 60%;
+        }
+        
+        .btnOn{
+            background-color: #fde910;
+            scale: 120%;
+            border-bottom-right-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .pageWrapper{
+            position: relative;
+            width: 100%;
+            height: 90%;
+            display: flex;
+        }
+        
+        .pageHolder{
+            width: 95%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .taskPage{
+            height: 90%;
+            width: 90%;
+            top: 0;
+            left: 0;
+            position: relative;
+            margin: 30px;
+        }
+        
+        .mapPage{
+            height: 90%;
+            width: 90%;
+            top: 0;
+            left: 0;
+            position: relative;
+            margin: 30px;
+        }
+        
+        .tasksLabelHolder{
+            width: 100%;
+            height: 7%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px grey solid;
+        }
+        
+        .tasksHolder{
+            width: 97%;
+            height: 90%;
+            margin: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: 0;
+            scale: 100%;
+        }
+        
+        .taskLabelSwitchBtn{
+            height: fit-content;
+            width: fit-content;
+            padding: 7px;
+            background-color: #b2b2b2;
+            border: 2px grey solid;
+            border-radius: 10px;
+            font-size: 20px;
+        }
+        
+        .taskLabelSwitchBtn:hover{
+            cursor: pointer;
+            scale: 110%;
+            background-color: #fde910;
+        }
+        .taskLabelSwitchBtn:active{
+            scale: 90%;
+            background-color: #D8CE61;
+        }
+        
+        .taskLabelSwitchBtn-On{
+            scale: 90%;
+            background-color: #fde910;
+        }
+        
+        .taskLabelSwitchBtn-On:hover{
+            scale: 90%;
+        }
+        
+        .taskLabelSwitchBtn-On:active{
+            scale: 85%;
+            background-color: #D8CE61;
+        }
+        
+        
+        .taskLabelSwitchBtnHolder{
+            height: 100%;
+            width: 20%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
     </style>
 </head>
 <body>
@@ -55,21 +206,91 @@
         <div class="header">
             <div></div>
             <div style="display: inline-flex">
-                <h2 style="margin-left: 50px; font-size: 30px; padding: 7px; background-color: #fde910; border-bottom-left-radius: 15px; border-top-right-radius: 15px">Оператор склада</h2>
+                <h2 id="name" class="nameHolder"></h2>
             </div>
-            <div onclick="logout()" class="logoutBtn" style="right: 0">Выход</div>
+            <div onclick="logout()" class="logoutBtn">Выход</div>
         </div>
+        <div class="pageWrapper">
+            <div class="pageBarHolder">
+                <div onclick="switchPage(1)" id="pageBtn1" class="pageBtn"><img src="/icons/inbox.png"></div>
+                <div onclick="switchPage(2)" id="pageBtn2" class="pageBtn"><img src="/icons/map.png"></div>
+            </div>
+            <div class="pageHolder">
+                <div id="page1" class="taskPage" style="display: none">
+                    <div class="tasksLabelHolder">
+                        <div class="taskLabelSwitchBtnHolder">
+                            <div id="filterBtnInWork" onclick="{
+                                const btn = $(this)[0];
+                                btn.classList.toggle('taskLabelSwitchBtn-On');
+                            }" class="taskLabelSwitchBtn">В работе</div>
+                            <div id="filterBtnOutWork" onclick="{
+                                const btn = $(this)[0];
+                                btn.classList.toggle('taskLabelSwitchBtn-On');
+                            }" class="taskLabelSwitchBtn">Невзятые</div>
+                        </div>
+                        <div></div>
+                        
+                    </div>
+                    <div class="tasksHolder">
+                        
+                    </div>
+                </div>
+                <div id="page2" class="mapPage" style="display: none"></div>
+            </div>
+        </div>
+        
     </div>
 </body>
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+<script src="/js/functions.js"></script>
 <script>
-    async function logout(){
-        const response = await fetch("Api/Logout", {
-            method: "POST"
+    showUserName();
+    
+    function showUserName(){
+        const id = document.cookie.split(";")[2].split("=")[1];
+        
+        let user = getUser(id);
+        
+        const nameHolder = document.getElementById("name");
+        
+        user.then(function (result){
+            nameHolder.innerText = result.FullName;
         })
-
-        if (response.ok === true){
-            location.reload();
+    }
+    
+    function switchPage(pageNumber){
+        turnOffPage(3 - pageNumber);
+        turnOnPage(pageNumber);
+    }
+    
+    function turnOnPage(pageNumber){
+        const page = document.getElementById("page"+pageNumber.toString());
+        page.removeAttribute("style");
+        
+        const pageBtn = document.getElementById("pageBtn"+pageNumber.toString());
+        pageBtn.classList.add("btnOn");
+        
+        const pageNameHolder = document.getElementById("name");
+        
+        switch (pageNumber){
+            case 1:
+                pageNameHolder.innerText = "Задачи";
+                break;
+            case 2:
+                pageNameHolder.innerText = "Карта склада";
+                break;
         }
     }
+    
+    function turnOffPage(pageNumber){
+        const page = document.getElementById("page"+pageNumber.toString());
+        page.setAttribute("style", "display: none;");
+
+        const pageBtn = document.getElementById("pageBtn"+pageNumber.toString());
+        pageBtn.classList.remove("btnOn");
+    }
+    
+    
 </script>
 </html>

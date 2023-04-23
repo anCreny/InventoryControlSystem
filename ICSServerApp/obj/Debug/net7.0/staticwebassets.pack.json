@@ -33,10 +33,6 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
-      "Id": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/icons/logout.png",
-      "PackagePath": "staticwebassets/icons/logout.png"
-    },
-    {
       "Id": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/js/functions.js",
       "PackagePath": "staticwebassets/js/functions.js"
     },
@@ -271,6 +267,10 @@
     {
       "Id": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/lib/jquery/dist/jquery.min.map",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/logout.png",
+      "PackagePath": "staticwebassets/logout.png"
     },
     {
       "Id": "obj/Debug/net7.0/staticwebassets/msbuild.ICSServerApp.Microsoft.AspNetCore.StaticWebAssets.props",

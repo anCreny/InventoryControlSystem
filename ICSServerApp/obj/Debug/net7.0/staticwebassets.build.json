@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "FmMydfDRFM0bHNE9vou+088WAOH/u3An3fy8HQhwny4=",
+  "Hash": "Ht7v+S+fYKhCsH5tTswWoWNfnWsQ7mF5NOScQez7mTM=",
   "Source": "ICSServerApp",
   "BasePath": "_content/ICSServerApp",
   "Mode": "Default",
@@ -134,23 +134,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Home.html"
-    },
-    {
-      "Identity": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/icons/logout.png",
-      "SourceId": "ICSServerApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/",
-      "BasePath": "_content/ICSServerApp",
-      "RelativePath": "icons/logout.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/icons/logout.png"
     },
     {
       "Identity": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/js/functions.js",
@@ -1171,6 +1154,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/LoaderHomePage.html"
+    },
+    {
+      "Identity": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/logout.png",
+      "SourceId": "ICSServerApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/",
+      "BasePath": "_content/ICSServerApp",
+      "RelativePath": "logout.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/logout.png"
     },
     {
       "Identity": "/home/creny/Git/InventoryControlSystem/ICSServerApp/wwwroot/OperatorHomePage.html",

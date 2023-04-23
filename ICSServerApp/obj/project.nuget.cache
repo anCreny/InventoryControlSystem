@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "JsvUVc+A/G8sH/HXpIFSBvpYcHp9yjjf5/fN82oCMNOFR18Z46SeYoqrKfSEF+LRZWsZwdyxWahmEbazeFDTVA==",
+  "dgSpecHash": "dchUowuLE6hvw/u1h2s9HpGciWcIgVdTVf7nV18TcLN9BS5Yw2TWmTyusEbYu2zjIG1Dah5S4/t+Bal1b06KJw==",
   "success": true,
   "projectFilePath": "/home/creny/Git/InventoryControlSystem/ICSServerApp/ICSServerApp.csproj",
   "expectedPackageFiles": [
@@ -19,7 +19,7 @@
     "/home/creny/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "/home/creny/.nuget/packages/mysqlconnector/2.2.5/mysqlconnector.2.2.5.nupkg.sha512",
     "/home/creny/.nuget/packages/pomelo.entityframeworkcore.mysql/7.0.0/pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
-    "/home/creny/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.2/microsoft.aspnetcore.app.ref.7.0.2.nupkg.sha512"
+    "/home/creny/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.3/microsoft.aspnetcore.app.ref.7.0.3.nupkg.sha512"
   ],
   "logs": []
 }

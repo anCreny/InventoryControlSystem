@@ -67,13 +67,15 @@ public class ApiController : Controller
     }
     
     [method: HttpPost]
-    public IActionResult Authorise(string login, string password)
+    public async Task<IActionResult> Authorise(string login, string password)
     {
-        var users = _db.Users.Where(user => user.Login == login && user.Password == password).ToList();
-        if (users.Count > 0)
+        var user = await _db.Users.FirstOrDefaultAsync(user => user.Login == login && user.Password == password);
+        
+        if (user is not null)
         {
             HttpContext.Response.Cookies.Append("login", login);
             HttpContext.Response.Cookies.Append("password", password);
+            HttpContext.Response.Cookies.Append("id", user.Id.ToString());
             return Ok();
         }
 
@@ -130,7 +132,64 @@ public class ApiController : Controller
             return NotFound();
         }
 
-        var allUsers = _db.Users.ToList();
+        var allUsers = _db.Users.Where(user => user.Id != 1).ToList();
         return Json(allUsers, options);
+    }
+
+    public async Task<IActionResult> GetGoal(int? id)
+    {
+        if (id is not null)
+        {
+            var goal = await _db.Goals.FirstOrDefaultAsync(goal => goal.Id == id);
+            if (goal is null)
+            {
+                return NotFound();
+            }
+
+            return Json(goal);
+        }
+
+        var goals = await _db.Goals.ToListAsync();
+        return Json(goals);
+    }
+
+    public async Task<IActionResult> AddGoal(Goal? goal)
+    {
+        if (goal is null)
+        {
+            return StatusCode(201);
+        }
+
+        await _db.Goals.AddAsync(goal);
+        await _db.SaveChangesAsync();
+        return Ok();
+    }
+
+    public async Task<IActionResult> UpdateGoal(Goal? goal)
+    {
+        if (goal is null)
+        {
+            return StatusCode(201);
+        }
+
+        _db.Goals.Update(goal);
+        await _db.SaveChangesAsync();
+        return Ok();
+    }
+
+    public async Task<IActionResult> DeleteGoal(int? id)
+    {
+        if (id is not null)
+        {
+            var goal = await _db.Goals.FirstOrDefaultAsync(goal => goal.Id == id);
+
+            if (goal is not null)
+            {
+                _db.Goals.Remove(goal);
+                await _db.SaveChangesAsync();
+            }
+        }
+
+        return NotFound();
     }
 }

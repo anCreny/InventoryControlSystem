@@ -7,8 +7,7 @@ namespace ICSServerApp.Controllers;
 public class HomeController : Controller
 {
     private DatabaseContext _db;
-
-
+    
     public HomeController(DatabaseContext db)
     {
         _db = db;
