@@ -17,6 +17,9 @@ async function getUser(id){
     if (response.ok === true){
         return await response.json();
     }
+    else{
+        return null;
+    }
 }
 
 function getOffset(element){

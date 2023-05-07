@@ -1,15 +1,6 @@
 version: "3.4"
 
 services:
-  server:
-    build: ./ICSServerApp
-    volumes: 
-      - ./ICSServerApp/wwwroot:/publish/wwwroot
-    depends_on: 
-      - db 
-    ports: 
-      - 80:80
-    container_name: asp.net
   db:
     image: mysql:8.0.32
     environment:
@@ -20,3 +11,14 @@ services:
     volumes: 
       - ./db:/var/lib/mysql 
     container_name: ICS_db_container
+    
+  server:
+    build: ./ICSServerApp
+    volumes: 
+      - ./ICSServerApp/wwwroot:/publish/wwwroot
+    depends_on: 
+      - db 
+    ports: 
+      - 80:80
+    container_name: asp.net
+  

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow: hidden;">
 <head>
     <meta charset="UTF-8">
     <title>Оператор склада</title>
@@ -134,6 +134,21 @@
             left: 0;
             position: relative;
             margin: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mapPage > .popupTaskCreateDistrPartTableHolder{
+            height: 100%;
+        }
+        
+        .mapPageBlocker{
+            position: fixed;
+            width: 80%;
+            height: 80%;
+            z-index: 100;
+            background: transparent;
         }
         
         .tasksLabelHolder{
@@ -199,9 +214,648 @@
             align-items: center;
             justify-content: space-around;
         }
+
+
+        .taskHolder {
+            width: 20%;
+            height: 15em;
+            margin: 30px;
+        }
+        
+        .taskHolder:hover{
+            scale: 110%;
+        }
+        
+        .taskHolder:active{
+            scale: 95%;
+        }
+
+        .taskKeeper {
+            margin-left: auto;
+            margin-right: auto;
+            height: 12%;
+            width: 90%;
+            top: 0;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-top: 2px solid gray;
+            border-left: 2px solid gray;
+            border-right: 2px solid gray;
+            background-color: #d7d7d7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+
+        .taskBody {
+            height: 85%;
+            width: 100%;
+            bottom:0;
+            border-radius: 10px;
+            border: 2px solid gray;
+            background-color: #d7d7d7;
+            align-items: end;
+            justify-content: center;
+        }
+
+        .productsHolder {
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 10px;
+            width: 85%;
+            height: 75%;
+            top: 0;
+            border-radius: 10px;
+            background-color: #efefef;
+            position: relative;
+        }
+
+        .descriptionHolder {
+            margin-right: auto;
+            margin-left: auto;
+            height: 15%;
+            top: 0;
+            margin-top: 7px;
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .descTime{
+            border-right: 1px solid black;
+        }
+        
+        .descField {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .descType{
+            border-left: 1px solid black;
+        }
+
+        .productHolder {
+            display: inline-flex;
+            align-items: center;
+            margin: 7px;
+        }
+        
+        .popupTaskInfoHolder{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgb(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popupTaskInfoWindow{
+            position: relative;
+            width: 50%;
+            height: 80%;
+            border-radius: 15px;
+            border: 2px solid gray;
+            background-color: #d7d7d7;
+        }
+        
+        .taskInfoField{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            position: relative;
+            width: 90%;
+            height: 15%;
+            margin-top: 20px;
+        }
+        
+        .taskInfoFieldLabel{
+            font-size: 25px;
+            border-bottom: 2px solid gray;
+            width: 100%;
+            height: 30%;
+            text-align: center;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+        }
+        
+        .taskInfoFieldValue{
+            font-size: 20px;
+            padding: 10px;
+            bottom: 0;
+            width: 100%;
+            height: 70%;
+            position: relative;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+            background-color: #efefef;
+        }
+        
+        .popupTaskCreateHolder{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgb(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popupTaskCreateWindow{
+            position: relative;
+            height: 100%;
+            width: 50%;
+            background-color: #d7d7d7;
+            border-right: 2px solid gray;
+            border-left: 2px solid gray;
+        }
+        
+        .popupTaskCreateDescField{
+            margin-right: auto;
+            margin-left: auto;
+            position: relative;
+            height: 20%;
+            width: 80%;
+            margin-top: 20px;
+        }
+        
+        .popupTaskCreateDescFieldLabel{
+            position: relative;
+            width: 100%;
+            height: 30%;
+            border-bottom: 2px solid gray;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            font-size: 30px;
+        }
+        
+        .popupTaskCreateDescFieldValue{
+            position: relative;
+            width: 100%;
+            height: 70%;
+            font-size: 25px;
+            text-align: center;
+            background-color: #efefef;
+            border-bottom-right-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        
+        .popupTaskCreateDistributionPartHolder{
+            position: relative;
+            height: 65%;
+            width: 100%;
+            bottom: 0;
+            border-top: 2px gray dotted;
+            margin-top: 10px;
+        }
+        
+        .popupTaskCreateDistrPartDesc{
+            height: 20%;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            top: 0;
+            font-size: 20px;
+            margin-top: 15px;
+        }
+        
+        .popupTaskCreateDistrPartDescLabel{
+            width: 100%;
+            height: 50%;
+            border-bottom: 2px solid gray;
+            display: flex;
+            justify-content: center;
+            align-items: end;
+        }
+        
+        .popupTaskCreateDistrPartDescValue{
+            width: 100%;
+            height: 50%;
+            text-align: center;
+            background-color: #efefef;
+        }
+        
+        .popupTaskCreateDistrPartTableHolder{
+            height: 50%;
+            width: 100%;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        
+        .tableCell{
+            height: 100%;
+            width: 100%;
+            position: relative;
+            transition: 0s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .tableCellIgnore{
+            height: 100%;
+            width: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .tableCell:hover{
+            scale: 100%;
+            cursor: pointer;
+            outline: 2px solid black;
+        }
+        
+        .tableCell:active{
+            scale: 95%;
+            outline: 2px solid black;
+        }
+        
+        table{
+            width: 50%;
+            height: 100%;
+        }
+        tr{
+            text-align: center;
+        }
+        
+        td{
+            max-width: 10px;
+        }
+        
+        tr th{
+            font-size: 30px;
+        }
+        
+        .popupTaskCreateDistrPartCellChooseHolder{
+            width: 100%;
+            height: 10%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popupTaskCreateDistrPartCellChooseWindow{
+            margin-top: 20px;
+            width: 50%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid gray;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .popupTaskCreateDistrPartCellChooseWindowLabel{
+            width: 25%;
+            height: 100%;
+            text-align: center;
+            font-size: 25px;
+            background-color: #fde910;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popupTaskCreateDistrPartCellChooseWindowWood{
+            width: 25%;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #8f8f8f;
+        }
+        
+        .popupTaskCreateDistrPartCellChooseWindowWood:hover{
+            cursor: pointer;
+            background-color: #a8a8a8;
+        }
+
+        .popupTaskCreateDistrPartCellChooseWindowVarnish{
+            width: 25%;
+            height: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #8f8f8f;
+        }
+        
+        .popupTaskCreateDistrPartCellChooseWindowVarnish:hover{
+            cursor: pointer;
+            background-color: #a8a8a8;
+        }
+        .popupTaskCreateDistrPartCellChooseWindowCancel:hover{
+            cursor: pointer;
+            background-color: #f61d1d;
+        }
+        .popupTaskCreateDistrPartCellChooseWindowCancel{
+            width: 25%;
+            height: 100%;
+            text-align: center;
+            font-size: 25px;
+            background-color: #de1b1b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popupTaskCreateBtnsHolder{
+            margin-top: 40px;
+            height: 10%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .popupTaskCreateSubmitBtn{
+            height: 100%;
+            width: 30%;
+            background-color: green;
+            border-radius: 15px;
+            border: 2px solid gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .popupTaskCreateSubmitBtn:hover{
+            scale: 105%;
+            cursor: pointer;
+            background-color: #0ab20a;
+        }
+
+        .popupTaskCreateSubmitBtn:active{
+            scale: 95%;
+        }
+        
+        .popupTaskCreateCancelBtn{
+            height: 100%;
+            width: 30%;
+            background-color: darkred;
+            border-radius: 15px;
+            border: 2px solid gray;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+        }
+        
+        .popupTaskCreateCancelBtn:hover{
+            scale: 105%;
+            cursor: pointer;
+            background-color: red;
+        }
+        
+        .popupTaskCreateCancelBtn:active{
+            scale: 95%;
+        }
+        
+        
+        .popupDayTaskListHolder{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgb(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .popupDayTaskListWindow{
+            position: relative;
+            width: 40%;
+            height: 100%;
+            border-right: 2px solid gray;
+            border-left: 2px solid gray;
+            background-color: #d7d7d7;
+        }
+        
+        .popupDayTaskListLabelHolder{
+            width: 100%;
+            height: 5%;
+            font-size: 35px;
+            border-bottom: 2px gray solid;
+            background-color: #9f9f9f;
+            text-align: center;
+        }
+        
+        .popupDayTaskListValueHolder{
+            width: 100%;
+            height: 95%;
+        }
+        
+        .popupDayTask{
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 85%;
+            height: 10%;
+            border-radius: 10px;
+            background-color: #c0c0c0;
+            border: 2px solid gray;
+            display: flex;
+            overflow: hidden;
+            
+        }
+
+        .popupDayTask:hover{
+            scale: 105%;
+            cursor: pointer;
+        }
+        
+        .popupDayTask:active{
+            scale: 95%;
+        }
+        
+        .popupDayTaskTime{
+            width: 40%;
+            height: 100%;
+            background-color: #efefef;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popupDayTaskProduct {
+            width: 20%;
+            height: 100%;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+        }
+        
+        .popupDayTaskProduct > img{
+            max-width: 50%;
+        }
+        
+        .pickedCell{
+            outline: 2px solid black;
+        }
+        
+        .popupDayTaskExitFrame{
+            height: 100%;
+            background: transparent;
+            width: 30%;
+        }
     </style>
 </head>
 <body>
+    <!-- Popup window for task info -->
+    <div id="popup" class="popupTaskInfoHolder" style="display: none" onclick="hideTaskInfo()">
+        <div class="popupTaskInfoWindow">
+            <div class="taskInfoField">
+                <div class="taskInfoFieldLabel">Время начала задачи</div>
+                <div id="timeHolder" class="taskInfoFieldValue"></div>
+            </div>
+            <div class="taskInfoField">
+                <div class="taskInfoFieldLabel">Тип задачи</div>
+                <div id="typeHolder" class="taskInfoFieldValue"></div>
+            </div>
+            <div class="taskInfoField">
+                <div class="taskInfoFieldLabel">Объем задачи</div>
+                <div id="productsHolder" class="taskInfoFieldValue"></div>
+            </div>
+            <div class="taskInfoField">
+                <div class="taskInfoFieldLabel">Исполнитель</div>
+                <div id="keeperHolder" class="taskInfoFieldValue"></div>
+            </div>
+            <div class="taskInfoField">
+                <div class="taskInfoFieldLabel">Ячейки, задействуемые в задаче</div>
+                <div id="cellsHolder" class="taskInfoFieldValue"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup window for task creation -->
+    <div id="taskCreation" class="popupTaskCreateHolder" style="display: none">
+        <div class="popupTaskCreateWindow">
+            <div class="popupTaskCreateDescField">
+                <div class="popupTaskCreateDescFieldLabel">Общая информация о задаче</div>
+                <div id="descField" class="popupTaskCreateDescFieldValue">
+                </div>
+            </div>
+            <div class="popupTaskCreateDistributionPartHolder">
+                <div class="popupTaskCreateDistrPartDesc">
+                    <div class="popupTaskCreateDistrPartDescLabel">Объем задачи</div>
+                    <div id="dayTaskValue" class="popupTaskCreateDistrPartDescValue"></div>
+                </div>
+                <div id="mapHolder" class="popupTaskCreateDistrPartTableHolder">
+                    <table id="map">
+                        <tr>
+                            <td></td>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                            <th>D</th>
+                            <th>E</th>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <td id="A1"></td>
+                            <td id="B1"></td>
+                            <td id="C1"></td>
+                            <td id="D1"></td>
+                            <td id="E1"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td id="A2"></td>
+                            <td id="B2"></td>
+                            <td id="C2"></td>
+                            <td id="D2"></td>
+                            <td id="E2"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td id="A3"></td>
+                            <td id="B3"></td>
+                            <td id="C3"></td>
+                            <td id="D3"></td>
+                            <td id="E3"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <td id="A4"></td>
+                            <td id="B4"></td>
+                            <td id="C4"></td>
+                            <td id="D4"></td>
+                            <td id="E4"></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>5</th>
+                            <td id="A5"></td>
+                            <td id="B5"></td>
+                            <td id="C5"></td>
+                            <td id="D5"></td>
+                            <td id="E5"></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="popupTaskCreateDistrPartCellChooseHolder">
+                    <div class="popupTaskCreateDistrPartCellChooseWindow">
+                        <div id="cellLabel" class="popupTaskCreateDistrPartCellChooseWindowLabel"></div>
+                        <div onclick="chooseCell(0)" class="popupTaskCreateDistrPartCellChooseWindowWood">
+                            <img src="icons/wood.png" style="max-width: 40%;">
+                        </div>
+                        <div onclick="chooseCell(1)" class="popupTaskCreateDistrPartCellChooseWindowVarnish">
+                            <img src="icons/varnish.png" style="max-width: 40%;">
+                        </div>
+                        <div onclick="clearCell()" class="popupTaskCreateDistrPartCellChooseWindowCancel">X</div>
+                    </div>
+                </div>
+                
+                <div class="popupTaskCreateBtnsHolder">
+                    <div onclick="createTask()" class="popupTaskCreateSubmitBtn">Создать</div>
+                    <div onclick="moveFromTaskCreationToDayTasks()" class="popupTaskCreateCancelBtn">Отменить</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup window for day tasks list -->
+    <div id="dayTasks" class="popupDayTaskListHolder" style="display: none">
+        <div class="popupDayTaskExitFrame" onclick="hideDayTasks()"></div>
+        <div class="popupDayTaskListWindow">
+            <div class="popupDayTaskListLabelHolder">Задачи на сегодняшнюю смену</div>
+            <div id="dayTasksHolder" class="popupDayTaskListValueHolder">
+            </div>
+        </div>
+        <div class="popupDayTaskExitFrame" onclick="hideDayTasks()"></div>
+    </div>
+    
+
+    <!-- Main pages for operator -->
     <div class="wrapper">
         <div class="header">
             <div></div>
@@ -216,6 +870,8 @@
                 <div onclick="switchPage(2)" id="pageBtn2" class="pageBtn"><img src="/icons/map.png"></div>
             </div>
             <div class="pageHolder">
+                
+                <!-- Page(1) for tasks creation -->
                 <div id="page1" class="taskPage" style="display: none">
                     <div class="tasksLabelHolder">
                         <div class="taskLabelSwitchBtnHolder">
@@ -228,14 +884,38 @@
                                 btn.classList.toggle('taskLabelSwitchBtn-On');
                             }" class="taskLabelSwitchBtn">Невзятые</div>
                         </div>
-                        <div></div>
+                        <div class="taskLabelSwitchBtnHolder">
+                            <div onclick="showDayTasks()" class="taskLabelSwitchBtn">Добавить задачу</div>
+                        </div>
                         
                     </div>
-                    <div class="tasksHolder">
-                        
+                    <div id="tasksHolder" class="tasksHolder">
+                        <div class="taskHolder">
+                        <div class="taskKeeper">Не взята</div>
+                        <div class="taskBody">
+                            <div class="descriptionHolder">
+                                <div class="descTime descField">13:40</div>
+                                <div class="descType descField"><img src="icons/Output.png" style="max-width: 20%"></div>
+                            </div>
+                            <div class="productsHolder">
+                                <div  class="productHolder">
+                                    <img src="icons/wood.png" style="max-width: 20%">
+                                    X 4
+                                </div>
+                                <div  class="productHolder">
+                                    <img src="icons/varnish.png" style="max-width: 20%">
+                                    X 0
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div>
                 </div>
-                <div id="page2" class="mapPage" style="display: none"></div>
+                
+                <!-- Page(2) for warehouse map -->
+                <div id="page2" class="mapPage" style="display: none">
+                    <div class="mapPageBlocker"></div>
+                </div>
             </div>
         </div>
         
@@ -245,7 +925,616 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
 <script src="/js/functions.js"></script>
 <script>
+    
+    let valueWood = 0;
+    let valueVarnish = 0;
+    let pickedCellAddress = "";
+    let newCells = [];
+    let currentDayTaskId = -1;
+    
+    let valueWoodNew = 0;
+    let valueVarnishNew = 0;
+    
+    function TranslateTable(pageNumber){
+        const map = document.getElementById("map");
+        
+        switch (pageNumber){
+            case 1:
+                const mapHolder = document.getElementById("mapHolder");
+                mapHolder.append(map);
+                break;
+            case 2:
+                const page2Holder = document.getElementById("page2");
+                page2Holder.append(map);
+                break;
+        }
+    }
+    
+    async function chooseCell(number){
+        let cell = await GetCell(pickedCellAddress);
+
+        const noun = newCells[pickedCellAddress];
+       
+        if (cell !== null && (number === 0 ? valueWood > 0 : valueVarnish > 0) && noun === undefined){
+            cell.productType = number;
+            cell.cellStatus = 1;
+
+            const cellTd = document.getElementById(pickedCellAddress);
+            switch (number){
+                case 0:
+                    valueWood--;
+                    valueWoodNew++;
+                    cellTd.children[0].innerText = "Д"
+                    break;
+                    
+                case 1:
+                    valueVarnish--;
+                    valueVarnishNew++;
+                    cellTd.children[0].innerText = "ЛК"
+                    break;
+            }
+            
+            cellTd.style.outline = "2px gray solid";
+            
+            newCells[cell.li + cell.ni.toString()] = cell;
+            refreshValues();
+        }
+        
+    }
+    
+    function clearCell(){
+        if (pickedCellAddress === 0) return
+        let productNumber = 0;
+        try{
+            productNumber = newCells[pickedCellAddress].productType;
+        }
+        catch (e){
+            console.log(`[931]${e}`)
+            return;
+        }
+        
+        switch (productNumber){
+            case 0:
+                valueWood++;
+                valueWoodNew--;
+                break;
+            case 1:
+                valueVarnish++;
+                valueVarnishNew--;
+                break;
+        }
+        let buffer = [];
+        
+        const letters = ["A", "B", "C", "D", "E"]
+
+        for (const letter of letters) {
+            for (let i = 1; i < 6; i++){
+                let index = letter + i.toString();
+                if (newCells[index] !== undefined && index !== pickedCellAddress){
+                    buffer[index] = newCells[index];
+                }
+            }
+        }
+        
+        newCells = buffer;
+        
+        
+        const cellTd = document.getElementById(pickedCellAddress);
+        cellTd.children[0].innerText = "";
+        cellTd.style.outline = "";
+        
+        refreshValues();
+    }
+    
+    function refreshValues(){
+        const valueF = document.getElementById("dayTaskValue");
+        valueF.innerText = (valueWood > 0 ? "Поддоны с древесиной Х " + valueWood + "\n" : "") + (valueVarnish > 0 ? "Поддоны с лакокрасочными материалами Х " + valueVarnish : "");
+    }
+    
+    function pickCell(address){
+        if (pickedCellAddress !== ""){
+            const lastPickedCell = document.getElementById(pickedCellAddress);
+            lastPickedCell.classList.remove("pickedCell");
+        }
+        
+        if (address !== "") {
+            const currentCell = document.getElementById(address);
+            currentCell.classList.add("pickedCell");
+
+            const cellLabel = document.getElementById("cellLabel");
+            cellLabel.innerText = address;
+        }
+        pickedCellAddress = address;
+    }
+    
+    async function getTasks(){
+        const response = await fetch("/Api/GetGoal/",{
+            method: "GET",
+            headers: {"Accept" : "json/application"}
+        })
+        
+        if (response.ok === true){
+            return await response.json();
+        }
+    } 
+    
     showUserName();
+    ReloadTasks();
+    UpdateTable()
+    RefreshDayTasksTable();
+    
+    async function updateCell(cell){
+        const response = await fetch("Api/UpdateCell",{
+            method: "UPDATE",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify({
+                id: cell.id,
+                li: cell.li,
+                ni: cell.ni,
+                type: cell.type,
+                productType: cell.productType,
+                cellStatus: cell.cellStatus
+            })
+        })
+        
+        return response.ok;
+    }
+    
+    async function createTask(){
+        const letters = ["A", "B", "C", "D", "E"]
+
+        const cells = [];
+
+        for (const letter of letters) {
+            for (let i = 1; i < 6; i++) {
+                let address = letter + i.toString();
+                if (newCells[address] !== undefined){
+                    cells.push(newCells[address])
+                }
+            }
+        }
+        
+        if (cells.length === 0){
+            return
+        }
+
+        for (const cell of cells) {
+            if (!await updateCell(cell)){
+                console.log(cell)
+                return
+            }
+        }
+        
+        let dayTask = await getDayTask(currentDayTaskId);
+        if (dayTask === null) return
+        
+        dayTask.wood = valueWood;
+        dayTask.paintsNVarnishes = valueVarnish;
+        
+        if (await updateDayTask(dayTask)){
+            const response = await fetch("Api/AddGoal/",{
+                method: "POST",
+                headers: {"Content-Type" : "application/json"},
+                body: JSON.stringify({
+                    paintsNVarnishes: valueVarnishNew,
+                    startTime: dayTask.startTime,
+                    wood: valueWoodNew,
+                    accordedCells: cells,
+                    type: dayTask.type,
+                    staffId: null
+                })
+            })
+            
+            if (response.ok){
+                moveFromTaskCreationToDayTasks();
+            }
+            else{
+                console.log(response.status)
+            }
+        }
+        else{
+            console.log("Nope")
+        }
+        
+    }
+    
+    async function updateDayTask(newDayTask){
+        const response = await fetch("Api/UpdateDayTask", {
+           method: "POST",
+            headers: {"Content-Type" : "application/json"},
+            body: JSON.stringify({
+                id: newDayTask.id,
+                paintsNVarnishes: newDayTask.paintsNVarnishes,
+                wood: newDayTask.wood,
+                startTime: newDayTask.startTime,
+                type: newDayTask.type
+            })
+        });
+        
+        return response.ok;
+    }
+    
+    async function getDayTask(id){
+        const response = await fetch(`/Api/GetDayTask?id=${id}`, {
+            method: "GET",
+            headers: {"Accept" : "application/json"}
+        })
+        
+        if (response.ok){
+            return await response.json();
+        }
+        else{
+            return null;
+        }
+    } 
+    
+    function moveFromDayTasksToTaskCreation(dayTask){
+        const valueF = document.getElementById("dayTaskValue");
+        valueF.innerText = (dayTask.wood > 0 ? "Поддоны с древесиной Х " + dayTask.wood + "\n" : "") + (dayTask.paintsNVarnishes > 0 ? "Поддоны с лакокрасочными материалами Х " + dayTask.paintsNVarnishes : "");
+        
+        const descF = document.getElementById("descField");
+        descF.innerText = "Время начала проведения задачи - " + dayTask.startTime + "\n" + (dayTask.type === 0 ? "Задача по загрузке материалов на склад" : "Задача по выгрузке материалов со склада"); 
+        
+        valueWood = dayTask.wood;
+        valueVarnish = dayTask.paintsNVarnishes;
+        currentDayTaskId = dayTask.id;
+        
+        hideDayTasks();
+        showTaskCreation();
+    }
+    
+    function moveFromTaskCreationToDayTasks(){
+        hideTaskCreation();
+        showDayTasks();
+        ReloadTasks();
+    }
+    
+    function showDayTasks(){
+        RefreshDayTasksTable();
+        const dayTaskWindow = document.getElementById("dayTasks");
+        dayTaskWindow.removeAttribute("style");
+    }
+    
+    function hideDayTasks(){
+        const dayTaskWindow = document.getElementById("dayTasks");
+        dayTaskWindow.setAttribute("style", "display: none");
+    }
+    
+    function showTaskCreation(){
+        UpdateTable();
+        const taskCreationWindow = document.getElementById("taskCreation");
+        taskCreationWindow.removeAttribute("style");
+    }
+    
+    function hideTaskCreation(){
+        const taskCreationWindow = document.getElementById("taskCreation");
+        taskCreationWindow.setAttribute("style", "display: none");
+
+        const valueF = document.getElementById("dayTaskValue");
+        valueF.innerText = "";
+
+        const descF = document.getElementById("descField");
+        descF.innerText = "";
+
+        const cellLabel = document.getElementById("cellLabel");
+        cellLabel.innerText = "";
+        
+        valueWood = 0;
+        valueVarnish = 0;
+        newCells = [];
+        currentDayTaskId = -1;
+
+        valueWoodNew = 0;
+        valueVarnishNew = 0;
+
+        pickCell("");
+    }
+    
+    
+    
+    async function RefreshDayTasksTable(){
+        const dayTasks = await GetDayTasks();
+        
+        const dayTaskHolderDiv = document.getElementById("dayTasksHolder");
+        dayTaskHolderDiv.innerHTML = "";
+        for (const dayTask of dayTasks) {
+            
+            const dayTaskDiv = document.createElement("div");
+            dayTaskDiv.classList.add("popupDayTask");
+            
+            const dayTaskTimeDiv = document.createElement("div");
+            dayTaskTimeDiv.classList.add("popupDayTaskTime");
+            dayTaskTimeDiv.innerText = dayTask.startTime;
+            dayTaskDiv.append(dayTaskTimeDiv);
+            
+            const dayTaskWoodDiv = document.createElement("div");
+            dayTaskWoodDiv.classList.add("popupDayTaskProduct");
+            const woodImg = document.createElement("img");
+            woodImg.src = "icons/wood.png";
+            const woodH2 = document.createElement("h2");
+            woodH2.innerText = " X " + dayTask.wood;
+            dayTaskWoodDiv.append(woodImg);
+            dayTaskWoodDiv.append(woodH2);
+            dayTaskDiv.append(dayTaskWoodDiv);
+            
+            const dayTaskVarnishDiv = document.createElement("div");
+            dayTaskVarnishDiv.classList.add("popupDayTaskProduct");
+            const varnishImg = document.createElement("img");
+            varnishImg.src = "icons/varnish.png";
+            const varnishH2 = document.createElement("h2");
+            varnishH2.innerText = " X " + dayTask.paintsNVarnishes;
+            dayTaskVarnishDiv.append(varnishImg);
+            dayTaskVarnishDiv.append(varnishH2);
+            dayTaskDiv.append(dayTaskVarnishDiv);
+            
+            const dayTaskTypeDiv = document.createElement("div");
+            dayTaskTypeDiv.classList.add("popupDayTaskProduct");
+            const typeImg = document.createElement("img");
+            if (dayTask.type === 0){
+                typeImg.src = "/icons/Input.png";
+            }
+            else{
+                typeImg.src = "/icons/Output.png";
+            }
+            dayTaskTypeDiv.append(typeImg);
+            dayTaskDiv.append(dayTaskTypeDiv);
+            dayTaskDiv.addEventListener("click", _ => moveFromDayTasksToTaskCreation(dayTask));
+
+            dayTaskHolderDiv.append(dayTaskDiv);
+        }
+    }
+    
+    async function GetDayTasks(){
+        const response = await fetch("Api/GetDayTask/", {
+           method: "GET",
+           headers: {"Accept" : "application/json"} 
+        });
+        
+        if (response.ok){
+            return await response.json();
+        }
+    }
+    
+    async function GetCells(){
+        const response = await fetch("Api/GetCell/", {
+            method: "GET",
+            headers: {"Accept": "application/json"}
+        })
+        
+        if (response.ok === true){
+            return await response.json();
+        }
+    }
+    
+    async function GetCell(address){
+        const response = await fetch(`Api/GetCell?address=${address}`, {
+            method: "GET",
+            headers: {"Accept" : "application/json"}
+        })
+        
+        if (response.ok){
+            return await response.json();
+        }
+        else{
+            return null;
+        }
+    }
+    
+    function clearTable(){
+        const letters = ['A','B','C','D','E'];
+        for (const letter of letters) {
+            for (let i = 1; i < 6; i++){
+                const td = document.getElementById(letter + i.toString());
+                td.innerHTML = "";
+            }
+        }
+    }
+    
+    async function UpdateTable(){
+        const cells = await GetCells();
+        
+        clearTable();
+        
+        for (const cell of cells) {
+            const id = cell.li.toString() + cell.ni.toString();
+            
+            const tableCell = document.getElementById(id);
+            
+            const tableCellDiv = document.createElement("div");
+            if (cell.cellStatus === 2 && cell.type === 0){
+                tableCellDiv.classList.add("tableCell");
+                tableCellDiv.addEventListener("click", _ => pickCell(id))
+            }
+            else{
+                tableCellDiv.classList.add("tableCellIgnore");
+            }
+            
+            
+            if (cell.type === 1){
+                tableCellDiv.setAttribute("style", "background-color: #20c997")
+            }
+            else if (cell.type === 0){
+                tableCellDiv.style.backgroundColor = "#d29617";
+                switch (cell.productType){
+                    case 0:
+                        tableCellDiv.innerText = "Д"
+                        break;
+                    case 1:
+                        tableCellDiv.innerText = "ЛК"
+                        break;
+                }
+                
+                switch (cell.cellStatus){
+                    case 0:
+                        tableCellDiv.style.backgroundColor = "#d25f17";
+                        break;
+                    case 1:
+                        tableCellDiv.style.backgroundColor = "#91670f";
+                        break;
+                }
+            }
+            tableCell.append(tableCellDiv)
+        }
+    }
+    
+    async function showTaskInfo(task){
+        const popup = document.getElementById("popup");
+        popup.removeAttribute("style");
+        
+        const timeHolder = document.getElementById("timeHolder");
+        timeHolder.innerText = task.startTime;
+        
+        const typeHolder = document.getElementById("typeHolder");
+        if (task.type === 0){
+            typeHolder.innerText = "Задача по загрузке товара на склад"
+        }
+        else{
+            typeHolder.innerText = "Задача по выгрузке товара со склада";
+        }
+        
+        const productsHolder = document.getElementById("productsHolder");
+        let productsStringValue = "";
+        if (task.wood > 0){
+            productsStringValue += "Поддоны с древесиной Х " + task.wood.toString() + "\n";
+        }
+        if (task.paintsNVarnishes > 0){
+            productsStringValue += "Поддоны с лакокрасочными материалами X " + task.paintsNVarnishes.toString();
+        }
+        
+        productsHolder.innerText = productsStringValue;
+        
+        const taskKeeper = document.getElementById("keeperHolder");
+        
+        if (task.staffId === null){
+            taskKeeper.innerText = "Никто пока не назначен на эут задачу";
+        }
+        else{
+            taskKeeper.innerText = (await getUser(task.staffId))?.fullName;
+        }
+        
+        const cells = document.getElementById("cellsHolder");
+        for (const cell of task.accordedCells) {
+            const address = cell.li + cell.ni;
+            cells.innerText += "[" + address + "] ";
+        }
+    }
+    
+    function hideTaskInfo(){
+        const popup = document.getElementById("popup");
+        popup.setAttribute("style", "display:none");
+
+        const timeHolder = document.getElementById("timeHolder");
+        const typeHolder = document.getElementById("typeHolder");
+        const productsHolder = document.getElementById("productsHolder");
+        const taskKeeper = document.getElementById("keeperHolder");
+        const cells = document.getElementById("cellsHolder");
+
+        timeHolder.innerText = "";
+        typeHolder.innerText = "";
+        productsHolder.innerText = "";
+        taskKeeper.innerText = "";
+        cells.innerText = "";
+    }
+    
+    async function ReloadTasks(){
+        const tasksHolder = document.getElementById("tasksHolder");
+        tasksHolder.innerHTML = "";
+        
+        const tasks = await getTasks();
+        for (const task of tasks) {
+            let taskHolderDiv = document.createElement("div");
+            taskHolderDiv.classList.add("taskHolder");
+            
+            taskHolderDiv.addEventListener("click", f => showTaskInfo(task));
+            
+            let taskKeeperDiv = document.createElement("div");
+            taskKeeperDiv.classList.add("taskKeeper");
+            console.log(task.staffId);
+            if (task.staffId === null){
+                taskKeeperDiv.innerText = "Не назначена";
+            }
+            else{
+                const user = await getUser(task.staffId);
+                if (user !== null){
+                    let shortName = user.fullName.split(" ")[0] + user.fullName.split(" ")[1][0] + "." + user.fullName.split(" ")[2][0] + ".";
+                    taskKeeperDiv.innerText = shortName;
+                }
+            }
+            
+            taskHolderDiv.append(taskKeeperDiv);
+            
+            let taskBodyDiv = document.createElement("div");
+            taskBodyDiv.classList.add("taskBody");
+            
+            let descHolderDiv = document.createElement("div");
+            descHolderDiv.classList.add("descriptionHolder");
+            
+            let timeTaskHolderDiv = document.createElement("div");
+            timeTaskHolderDiv.classList.add("descTime", "descField");
+            timeTaskHolderDiv.innerText = task.startTime;
+            
+            descHolderDiv.append(timeTaskHolderDiv);
+            
+            let typeTaskHolderDiv = document.createElement("div");
+            typeTaskHolderDiv.classList.add("descType", "descField");
+            let typeImg = document.createElement("img");
+            if (task.type === 0){
+                typeImg.src = "icons/Input.png";
+            }
+            else{
+                typeImg.src = "icons/Output.png";
+            }
+            typeImg.setAttribute('style',"max-width: 20%");
+            
+            typeTaskHolderDiv.append(typeImg);
+            
+            descHolderDiv.append(typeTaskHolderDiv);
+            
+            taskBodyDiv.append(descHolderDiv);
+            
+            let productsHolderDiv = document.createElement("div");
+            productsHolderDiv.classList.add("productsHolder");
+            if (task.wood > 0){
+                let productHolderDiv = document.createElement("div");
+                productHolderDiv.classList.add("productHolder");
+                
+                let productImg = document.createElement("img");
+                productImg.src = "icons/wood.png";
+                productImg.setAttribute('style',"max-width: 20%");
+                productHolderDiv.append(productImg);
+                
+                let valueProductH2 = document.createElement("h2");
+                valueProductH2.innerText = "X " + task.wood.toString();
+                
+                productHolderDiv.append(valueProductH2);
+                
+                productsHolderDiv.append(productHolderDiv);
+            }
+            
+            if (task.paintsNVarnishes > 0){
+                let productHolderDiv = document.createElement("div");
+                productHolderDiv.classList.add("productHolder");
+
+                let productImg = document.createElement("img");
+                productImg.src = "icons/varnish.png";
+                productImg.setAttribute('style',"max-width: 20%");
+                productHolderDiv.append(productImg);
+
+                let valueProductH2 = document.createElement("h2");
+                valueProductH2.innerText = "X " + task.paintsNVarnishes.toString();
+
+                productHolderDiv.append(valueProductH2);
+
+                productsHolderDiv.append(productHolderDiv);
+            }
+            
+            taskBodyDiv.append(productsHolderDiv);
+            
+            taskHolderDiv.append(taskBodyDiv);
+            
+            tasksHolder.append(taskHolderDiv);
+        }
+    }
     
     function showUserName(){
         const id = document.cookie.split(";")[2].split("=")[1];
@@ -265,6 +1554,8 @@
     }
     
     function turnOnPage(pageNumber){
+        TranslateTable(pageNumber)
+        
         const page = document.getElementById("page"+pageNumber.toString());
         page.removeAttribute("style");
         
@@ -290,7 +1581,6 @@
         const pageBtn = document.getElementById("pageBtn"+pageNumber.toString());
         pageBtn.classList.remove("btnOn");
     }
-    
     
 </script>
 </html>
