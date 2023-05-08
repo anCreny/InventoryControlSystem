@@ -17,7 +17,8 @@ services:
     volumes: 
       - ./ICSServerApp/wwwroot:/publish/wwwroot
     depends_on: 
-      - db 
+      - db
+    restart: always
     ports: 
       - 80:80
     container_name: asp.net

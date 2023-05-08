@@ -1406,10 +1406,10 @@
         const taskKeeper = document.getElementById("keeperHolder");
         
         if (task.staffId === null){
-            taskKeeper.innerText = "Никто пока не назначен на эут задачу";
+            taskKeeper.innerText = "Никто пока не назначен на эту задачу";
         }
         else{
-            taskKeeper.innerText = (await getUser(task.staffId))?.fullName;
+            taskKeeper.innerText = (await getUser(task.staffId))?.FullName;
         }
         
         const cells = document.getElementById("cellsHolder");
@@ -1456,7 +1456,6 @@
             else{
                 const user = await getUser(task.staffId);
                 if (user !== null){
-                    console.log(user)
                     let shortName = user.FullName.split(" ")[0];
                     taskKeeperDiv.innerText = shortName;
                 }

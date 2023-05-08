@@ -33,12 +33,9 @@ public class HomeController : Controller
         }
     }
 
-    public async Task GetReport([FromServices] PDFWriterService pdfWriterService)
+    public async Task GetReport()
     {
-        var file = await pdfWriterService.GenerateReport();
-
-        HttpContext.Response.Headers.ContentDisposition = "attachment;";
-        await HttpContext.Response.SendFileAsync(file.FullPath);
+        
     }
 
     public async Task Authorization()
