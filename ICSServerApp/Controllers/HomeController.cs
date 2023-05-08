@@ -1,6 +1,7 @@
 ﻿using ICSServerApp.Additionals;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using PdfSharp.Pdf;
 
 namespace ICSServerApp.Controllers;
 
@@ -21,7 +22,7 @@ public class HomeController : Controller
         switch (accessRight)
         {
             case "admin":
-                await HttpContext.Response.SendFileAsync("wwwroot/Home.html");
+                await HttpContext.Response.SendFileAsync("wwwroot/AdminPage.html");
                 break;
             case "loader":
                 await HttpContext.Response.SendFileAsync("wwwroot/LoaderHomePage.html");
@@ -29,10 +30,15 @@ public class HomeController : Controller
             case "operator":
                 await HttpContext.Response.SendFileAsync("wwwroot/OperatorHomePage.html");
                 break;
-            default:
-                await HttpContext.Response.WriteAsync("Cyka");
-                break;
         }
+    }
+
+    public async Task GetReport([FromServices] PDFWriterService pdfWriterService)
+    {
+        var file = await pdfWriterService.GenerateReport();
+
+        HttpContext.Response.Headers.ContentDisposition = "attachment;";
+        await HttpContext.Response.SendFileAsync(file.FullPath);
     }
 
     public async Task Authorization()

@@ -5,8 +5,6 @@ using ICSServerApp.Models;
 using ICSServerApp.Models.Database;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-
 namespace ICSServerApp.Controllers;
 
 public class ApiController : Controller
@@ -131,6 +129,45 @@ public class ApiController : Controller
 
         var allUsers = _db.Users.Where(user => user.Id != 1).ToList();
         return Json(allUsers, options);
+    }
+
+    public async Task<IActionResult> MarkGoalDone(int? id)
+    {
+        if (id is not null)
+        {
+            var goal = await _db.Goals.FirstOrDefaultAsync(goal => goal.Id == id);
+            
+            if (goal is not null)
+            {
+                var links = _db.Links.ToList().Where(link => link.GoalId == goal.Id);
+                var cellAddresses = new List<CellAddress>();
+                foreach (var link in links)
+                {
+                    var cell = await _db.Cells.FirstOrDefaultAsync(cell => cell.Id == link.CellId);
+                    cellAddresses.Add(new CellAddress{ Value = cell.Li + cell.Ni.ToString()});
+                }
+                
+                var finishedGoal = new FinishedGoal
+                {
+                    Wood = goal.Wood,
+                    PaintsNVarnishes = goal.PaintsNVarnishes,
+                    Type = goal.Type,
+                    StartTime = goal.StartTime,
+                    StaffId = goal.StaffId,
+                    CellAddresses = cellAddresses
+                };
+
+                _db.Goals.Remove(goal);
+                _db.FinishedGoals.Add(finishedGoal);
+                _db.Links.RemoveRange(links);
+
+                await _db.SaveChangesAsync();
+                
+                return Ok();
+            }
+        }
+
+        return NotFound();
     }
 
     public async Task<IActionResult> GetUserGoal(int? userid)

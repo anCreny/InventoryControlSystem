@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dchUowuLE6hvw/u1h2s9HpGciWcIgVdTVf7nV18TcLN9BS5Yw2TWmTyusEbYu2zjIG1Dah5S4/t+Bal1b06KJw==",
+  "dgSpecHash": "oPZKXjm80tM0Nt106z4PEl0xDVJfqhTZyOThFZbEJfGTQeBpfpvfBVqxuU5K20tPeAenJrhgAaxL9ZTnXuOauw==",
   "success": true,
   "projectFilePath": "/home/creny/Git/InventoryControlSystem/ICSServerApp/ICSServerApp.csproj",
   "expectedPackageFiles": [
@@ -18,8 +18,20 @@
     "/home/creny/.nuget/packages/microsoft.extensions.options/7.0.0/microsoft.extensions.options.7.0.0.nupkg.sha512",
     "/home/creny/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "/home/creny/.nuget/packages/mysqlconnector/2.2.5/mysqlconnector.2.2.5.nupkg.sha512",
+    "/home/creny/.nuget/packages/pdfsharp/1.50.5147/pdfsharp.1.50.5147.nupkg.sha512",
     "/home/creny/.nuget/packages/pomelo.entityframeworkcore.mysql/7.0.0/pomelo.entityframeworkcore.mysql.7.0.0.nupkg.sha512",
     "/home/creny/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.3/microsoft.aspnetcore.app.ref.7.0.3.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PDFsharp 1.50.5147' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "PDFsharp",
+      "targetGraphs": [
+        "net7.0"
+      ]
+    }
+  ]
 }

@@ -11,6 +11,8 @@ public class DatabaseContext : DbContext
     public DbSet<DayTask> DayTasks { get; set; } = null!;
     public DbSet<CellsGoalLink> Links { get; set; } = null!;
 
+    public DbSet<FinishedGoal> FinishedGoals { get; set; } = null!;
+
     public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
     {
         Database.EnsureCreated();

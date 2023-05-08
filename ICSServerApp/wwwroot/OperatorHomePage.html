@@ -1456,7 +1456,8 @@
             else{
                 const user = await getUser(task.staffId);
                 if (user !== null){
-                    let shortName = user.fullName.split(" ")[0] + user.fullName.split(" ")[1][0] + "." + user.fullName.split(" ")[2][0] + ".";
+                    console.log(user)
+                    let shortName = user.FullName.split(" ")[0];
                     taskKeeperDiv.innerText = shortName;
                 }
             }

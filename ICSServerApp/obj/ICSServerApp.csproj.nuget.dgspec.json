@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[7.0.4, )"
             },
+            "PDFsharp": {
+              "target": "Package",
+              "version": "[1.50.5147, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[7.0.0, )"

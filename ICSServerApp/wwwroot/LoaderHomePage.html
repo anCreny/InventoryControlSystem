@@ -565,7 +565,11 @@
     
     let pickedCell = null;
     
+    let taskId = 0;
+    
     let taskType = 0;
+    
+    let cellsCount = 0;
     
     async function logout(){
         const response = await fetch("Api/Logout", {
@@ -701,7 +705,18 @@
             
             if (response.ok){
                 wipeChoice();
+                cellsCount--;
+                if (cellsCount === 0){
+                    
+                }
             }
+        }
+    }
+    
+    async function MarkGoal(){
+        const response = await fetch(`Api/MarkGoalDone?id=${taskId}`);
+        if (response.ok){
+            await takePath();
         }
     }
     
@@ -906,7 +921,7 @@
         const cells = await GetCells();
 
         clearTable();
-
+        let cellCounter = 0;
         for (const cell of cells) {
             const id = cell.li.toString() + cell.ni.toString();
 
@@ -924,6 +939,7 @@
                                 tableCellDiv.classList.remove("tableCellIgnore")
                                 tableCellDiv.classList.add("tableCell")
                                 tableCellDiv.addEventListener("click", _ => pickCell(cell))
+                                cellCounter++;
                                 
                             }
                             break;
@@ -932,6 +948,7 @@
                                 tableCellDiv.classList.remove("tableCellIgnore")
                                 tableCellDiv.classList.add("tableCell")
                                 tableCellDiv.addEventListener("click", _ => pickCell(cell))
+                                cellCounter++;
                             }
                             break;
                     }
@@ -964,6 +981,13 @@
                 }
             }
             tableCell.append(tableCellDiv)
+        }
+        if (cellCounter === 0){
+            await MarkGoal();
+        }
+        else{
+            cellsCount = cellCounter;
+            taskId = task.id;
         }
     }
     
