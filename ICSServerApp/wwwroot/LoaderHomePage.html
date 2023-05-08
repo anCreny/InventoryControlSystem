@@ -638,6 +638,7 @@
         })
         
         if (response.ok){
+            hideTaskInfo();
             await takePath();
         }
         
@@ -705,10 +706,12 @@
             
             if (response.ok){
                 wipeChoice();
+                await UpdateTable();
                 cellsCount--;
                 if (cellsCount === 0){
-                    
+                    await MarkGoal()
                 }
+                
             }
         }
     }
@@ -846,6 +849,7 @@
     }
     
     async function showTaskDoingPage(userTask){
+        taskId = userTask.id
         await UpdateTable(userTask);
         
         taskType = userTask.type
@@ -918,6 +922,12 @@
     }
 
     async function UpdateTable(task){
+        if (task === undefined){
+            const userId = document.cookie.split(" ")[2].split("=")[1];
+            task = await getUserTask(userId);
+        }
+        
+        
         const cells = await GetCells();
 
         clearTable();
