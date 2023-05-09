@@ -448,6 +448,18 @@ public class ApiController : Controller
         }
         
     }
+    
+    public async Task GetReport()
+    {
+        await HttpContext.Response.SendFileAsync("wwwroot/Report.html");
+    }
+
+    public async Task<IActionResult> GetFinishedGoals()
+    {
+        var goals = await _db.FinishedGoals.ToListAsync();
+
+        return Json(goals);
+    }
 
     public async Task WipeDataBase()
     {

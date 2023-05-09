@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Отчет</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        
+        .wrapper{
+            position: absolute;
+            height: 100%;
+            width: 100%;
+        }
+        .header{
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+        }
+        
+        .header2{
+            width: 100%;
+            height: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            font-size: 30px;
+        }
+        
+        .dataWrapper{
+            width: 100%;
+            //display: flex;
+            justify-content: center;
+        }
+        
+        .dataValue{
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+            font-size: 23px;
+        }
+        
+        .dataValueHeader{
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">Отчет</div>
+        <div class="header2">О проделанной работе на складе</div>
+        <div id="storage" class="dataWrapper">
+            <div class="dataValue">
+                <div class="dataValueHeader">В 9:00 была произведена загрузка на склад в следующем объеме:</div>
+                <p>2 поддона древисины</p>
+                <p>3 поддона лакокрасочных изделий</p>
+            </div>
+            <div class="dataValue">
+                <div class="dataValueHeader">В 9:00 была произведена загрузка на склад в следующем объеме:</div>
+                <p>2 поддона древисины</p>
+                <p>3 поддона лакокрасочных изделий</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    updateReport();
+    async function getFinishedTasks(){
+        const response = await fetch("/Api/GetFinishedGoals",{
+            method: "GET",
+            headers: {"Accept" : "Application/json"}
+        })
+        
+        if (response.ok){
+            return await response.json()
+        }
+        else{
+            return null;
+        }
+    }
+    
+    async function updateReport(){
+        const tasks = await getFinishedTasks();
+        if (tasks !== null){
+            const storage = document.getElementById("storage");
+            storage.innerHTML = "";
+            
+            for (const task of tasks) {
+                const dataValueDiv = document.createElement("div");
+                dataValueDiv.classList.add("dataValue");
+                
+                const header = document.createElement("div");
+                header.classList.add("dataValueHeader");
+                
+                switch (task.type){
+                    case 0:
+                        header.innerText = `В ${task.startTime} была произведена загрузка на склад в следующем объеме:`
+                        break;
+                    case 1:
+                        header.innerText = `В ${task.startTime} была произведена выгрузка со склада в следующем объеме:`
+                        break;
+                }
+                
+                dataValueDiv.append(header);
+                
+                if (task.wood > 0){
+                    const p = document.createElement("p");
+                    p.innerText = `${task.wood} поддонов древисины`
+                    dataValueDiv.append(p);
+                }
+                
+                if (task.paintsNVarnishes > 0){
+                    const p = document.createElement("p");
+                    p.innerText = `${task.paintsNVarnishes} поддонов лакокрасочных изделий`
+                    dataValueDiv.append(p);
+                }
+                
+                storage.append(dataValueDiv);
+            }
+        }
+    }
+</script>
+</html>

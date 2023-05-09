@@ -33,11 +33,6 @@ public class HomeController : Controller
         }
     }
 
-    public async Task GetReport()
-    {
-        
-    }
-
     public async Task Authorization()
     {
         await HttpContext.Response.SendFileAsync("wwwroot/AuthorizationPage.html");

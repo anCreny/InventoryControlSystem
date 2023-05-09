@@ -708,18 +708,26 @@
                 wipeChoice();
                 await UpdateTable();
                 cellsCount--;
-                if (cellsCount === 0){
-                    await MarkGoal()
+                if (cellsCount <= 0){
+                    console.log("Маркерим гоал");
+                    await MarkGoal();
                 }
-                
+            }
+            else{
+                console.log()
             }
         }
     }
     
     async function MarkGoal(){
+        console.log(taskId);
         const response = await fetch(`Api/MarkGoalDone?id=${taskId}`);
+        
         if (response.ok){
             await takePath();
+        }
+        else{
+            console.log("не окей");
         }
     }
     
